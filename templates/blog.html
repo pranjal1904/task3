@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat Blog</title>
+</head>
+<body>
+    <h1>Creat New Blog</h1>
+    <form action="{% url 'saveblog' %}" method="POST" enctype="multipart/form-data">
+        <table>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" required></td>
+            </tr>
+            <tr>
+                <td>Image:</td>
+                <td><input type="file" name="blogimage" required></td>
+            </tr>
+            <tr>
+                <td>Category:</td>
+                <td>
+                    <select name="category">
+                        <option value="Mental Health">Mental Health</option>
+                        <option value="Heart Disease">Heart Disease</option>
+                        <option value="Covid19">Covid19</option>
+                        <option value="Immunization">Immunization</option>
+                      </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Summary:</td>
+                <td><input type="text" name="summary" required></td>
+            </tr>
+            <tr>
+                <td>Content:</td>
+                <td><input type="text" name="content" required></td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="docid" value="{{user.id}}"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="Save"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bookingcompleted.css' %}">
+    <title>bookingcompleted</title>
+</head>
+<body>
+    <h1>Booking Completed</h1>
+    <div>
+        <table class="content-table">
+            <thead >
+                <tr>
+                    <td>Appointment Details</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Doctor Name :</td>
+                    <td>dr {{ DoctorsN }}</td>
+                </tr>
+                <tr>
+                    <td>Appointment date :</td>
+                    <td>{{AppointmentD}}</td>
+                </tr>
+                <tr>
+                    <td>Appointment start time :</td>
+                    <td>{{AppointmentST}}</td>
+                </tr>
+                <tr>
+                    <td>Appointment end time :</td>
+                    <td>{{AppointmentET}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

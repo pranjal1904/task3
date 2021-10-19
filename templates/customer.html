@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>customer page</title>
+    <link rel="stylesheet" href="{% static 'css/customer.css' %}">
+</head>
+<body>
+ <h1> hello {{ user.username }} your role is Patient </h1>
+ <button><a href="{% url 'bookappointment' %}" value="bookappointment" class="btn btn-pill text-white btn-block btn-primary">Book Appointment</a></button>
+ <h1>List of Blogs</h1>
+ <div>
+    <table class="content-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Summary</th>
+                <th>Content</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for blog in blogs %}
+            <tr>
+                {% if blog.category == "Mental Health" %}
+                <td>{{blog.title}}</td>
+                {% if blog.image %}
+                    <td><img src="{{blog.image.url}}" alt="" width="200px"></td>
+                {% else %}
+                    <td><img src="{% static 'blog/blogimage/blank.png' %}" alt="" width="200px"></td>
+                {% endif %}
+                <td>{{blog.category}}</td>
+                {% if blog.summary|wordcount >= 15 %}
+                <td>{{blog.summary|slice:":0"}}....</td>
+                {% endif %}
+                <td>{{blog.content}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for blog in blogs %}
+            <tr>
+                {% if blog.category == "Heart Disease" %}
+                <td>{{blog.title}}</td>
+                {% if blog.image %}
+                    <td><img src="{{blog.image.url}}" alt="" width="200px"></td>
+                {% else %}
+                    <td><img src="{% static 'blog/blogimage/blank.png' %}" alt="" width="200px"></td>
+                {% endif %}
+                <td>{{blog.category}}</td>
+                <td>{{blog.summary}}</td>
+                <td>{{blog.content}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for blog in blogs %}
+            <tr>
+                {% if blog.category == "Covid19" %}
+                <td>{{blog.title}}</td>
+                {% if blog.image %}
+                    <td><img src="{{blog.image.url}}" alt="" width="200px"></td>
+                {% else %}
+                    <td><img src="{% static 'blog/blogimage/blank.png' %}" alt="" width="200px"></td>
+                {% endif %}
+                <td>{{blog.category}}</td>
+                <td>{{blog.summary}}</td>
+                <td>{{blog.content}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for blog in blogs %}
+            <tr>
+                {% if blog.category == "Immunization" %}
+                <td>{{blog.title}}</td>
+                {% if blog.image %}
+                    <td><img src="{{blog.image.url}}" alt="" width="200px"></td>
+                {% else %}
+                    <td><img src="{% static 'blog/blogimage/blank.png' %}" alt="" width="200px"></td>
+                {% endif %}
+                <td>{{blog.category}}</td>
+                <td>{{blog.summary}}</td>
+                <td>{{blog.content}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

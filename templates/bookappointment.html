@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bookappointment.css' %}">
+    <title>Appointment</title>
+</head>
+<body>
+    <h1>List of Doctors</h1>
+    <div>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Book Appointment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                    {% if doctor.is_employee %}
+                        <td>Dr {{doctor.username}}</td>
+                        {% if doctor.image %}
+                            <td><img src="{{doctor.image.url}}" alt="" width="200px"></td>
+                        {% else %}
+                            <td><img src="{% static 'blog/blogimage/blank.png' %}" alt="" width="200px"></td>
+                        {% endif %}
+                        <td><button><a class="btn btn-sm btn-info" href="{% url 'confirmappointment' doctor.id %}">Book Appointment</a></button></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
